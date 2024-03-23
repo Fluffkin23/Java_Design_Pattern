@@ -1,6 +1,8 @@
 package Observer;
 
+import Model.Playlist;
+
 public interface PlaylistObserver
 {
-    void update();
+    void update(Playlist playlist);
 }
