@@ -5,24 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de4d1ac3-037b-43fb-8449-e597cc8b86a2" name="Changes" comment="Added MusicPlayerUI:&#10;- Creates a folder named Playlist inside Home-&gt;Music&#10;&#10;- Creates a Playlist folder with the desired name&#10;&#10;- Deletes the Playlist once created from a dropwdown menu&#10;&#10;Updated MusicPlayerGUI:&#10;- Now saves the song in Home-&gt;Music-&gt;Library">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/MusicLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MusicLibrary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MusicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MusicController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Observer/LibraryObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Observer/LibraryObserver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/LibraryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/LibraryView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/MusicPlayerGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/LibraryPlayerUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/MusicPlayerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/PlaylistPlayerUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/PlaylistView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/PlaylistView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/SongPlayerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/SongPlayerUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/SongView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/SongView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="playlistUI-implementation-local" />
+        <entry key="$PROJECT_DIR$" value="songPlayerUI-implementation-local" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -41,10 +45,12 @@
     "Application.LibraryPlayerUI.executor": "Run",
     "Application.MusicPlayerGUI.executor": "Run",
     "Application.MusicPlayerUI.executor": "Run",
+    "Application.PlaylistPlayerUI.executor": "Run",
+    "Application.SongPlayerUI.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "playlistUI-implementation-local",
+    "git-widget-placeholder": "songPlayerUI-implementation-local",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/costa/IdeaProjects/Java_Design_Pattern/src",
     "node.js.detected.package.eslint": "true",
@@ -60,29 +66,12 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\costa\IdeaProjects\Java_Design_Pattern\src" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/resources/img" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="View" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="PlaylistPlayerUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="View.PlaylistPlayerUI" />
-      <module name="Java_Design_Pattern" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="View.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.PlaylistPlayerUI" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
