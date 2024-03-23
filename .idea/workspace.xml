@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de4d1ac3-037b-43fb-8449-e597cc8b86a2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Factory/WAVSong.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Factory/WAVSong.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/MusicLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MusicLibrary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Song.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MusicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MusicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Observer/MusicControllerObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Observer/MusicControllerObserver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/CreateSong.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/CreateSong.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/LibraryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/LibraryView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/Model/PlaylistTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Model/PlaylistTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/MusicPlayerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MusicPlayerUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +33,7 @@
     "Application.CreateSong.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.MusicPlayerGUI.executor": "Run",
+    "Application.MusicPlayerUI.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -78,6 +77,7 @@
       <workItem from="1711209587447" duration="2344000" />
       <workItem from="1711212049044" duration="35000" />
       <workItem from="1711212096927" duration="578000" />
+      <workItem from="1711212704763" duration="2604000" />
     </task>
     <servers />
   </component>

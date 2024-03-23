@@ -23,6 +23,10 @@ public class LibraryView implements LibraryObserver {
         update();
     }
 
+    public JTable getTable() {
+        return table;
+    }
+
     @Override
     public void update() {
         // Clear the existing rows

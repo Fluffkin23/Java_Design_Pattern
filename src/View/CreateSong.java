@@ -3,6 +3,7 @@ package View;
 import Factory.MP3SongCreator;
 import Factory.SongCreator;
 import Factory.WAVSongCreator;
+import Model.MusicLibrary;
 import Model.Song;
 import java.io.File;
 
@@ -14,7 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-public class CreateSong {
+public class CreateSong extends JFrame{
     private JTextField titleTextField;
     private JTextField artistTextField;
     private JButton importMP3Button;
@@ -24,7 +25,12 @@ public class CreateSong {
     private File selectedFile;
     private String fileType;
 
-    public CreateSong() {
+    private MusicLibrary musicLibrary; // Add a MusicLibrary member
+
+
+    public CreateSong(MusicLibrary library) {
+
+        this.musicLibrary = library;
         JFrame frame = new JFrame("Music Player");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridLayout(5, 2, 10, 10));
@@ -90,6 +96,8 @@ public class CreateSong {
             try {
                 Files.copy(selectedFile.toPath(), songFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
                 System.out.println("New song created: " + song.getDetails() + ", saved to: " + songFile.getAbsolutePath());
+                musicLibrary.addSong(song);
+
                 JOptionPane.showMessageDialog(frame, "Song saved: " + song.getDetails());
             } catch (IOException ioException) {
                 JOptionPane.showMessageDialog(frame, "Error saving the song.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -99,7 +107,9 @@ public class CreateSong {
         }
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(CreateSong::new);
-    }
+//    public static void main(String[] args) {
+//        SwingUtilities.invokeLater(() -> {
+//            new CreateSong(m).setVisible(true);
+//        });
+//    }
 }
