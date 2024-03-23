@@ -16,7 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-public class MusicPlayerGUI
+public class LibraryPlayerUI
 {
     // GUI components
     private JTextField titleTextField; // Field to enter the song title
@@ -29,7 +29,7 @@ public class MusicPlayerGUI
     private String fileType; // String to store the type of the selected file (MP3 or WAV)
     private Path libraryPath = Paths.get(System.getProperty("user.home"), "Music", "Library");
 
-    public MusicPlayerGUI() {
+    public LibraryPlayerUI() {
 
         // Create the frame
         JFrame frame = new JFrame("Music Player");
@@ -182,10 +182,10 @@ public class MusicPlayerGUI
     }
 
     private void initializeLibraryFolder() {
-        // Define the path to the Library folder inside the user's Music directory
+        // Define the path to the Library folder inside the userrs Music directory
         libraryPath = Paths.get(System.getProperty("user.home"), "Music", "Library");
 
-        // Check if the Library folder exists, and if not, create it
+        // check if the Library folder exists, and if not, create it
         if (!Files.exists(libraryPath)) {
             try {
                 Files.createDirectories(libraryPath); // Creates the directory if it doesn't exist
@@ -202,7 +202,7 @@ public class MusicPlayerGUI
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new MusicPlayerGUI();
+                new LibraryPlayerUI();
             }
         });
     }

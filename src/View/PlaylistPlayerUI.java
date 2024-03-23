@@ -1,15 +1,16 @@
 package View;
 
+import Model.Playlist;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
 
-public class MusicPlayerUI extends JFrame {
+public class PlaylistPlayerUI extends JFrame {
     private JTextField playlistNameField;
     private JButton createPlaylistButton, removePlaylistButton;
     private JComboBox<String> playlistsComboBox;
@@ -17,7 +18,15 @@ public class MusicPlayerUI extends JFrame {
     private Path musicPath = Paths.get(System.getProperty("user.home"), "Music");
     private Path playlistsPath = musicPath.resolve("Playlists");
 
-    public MusicPlayerUI() {
+    // Functional interface for update actions
+    @FunctionalInterface
+    public interface UpdateAction {
+        void execute();
+    }
+
+    private UpdateAction updatePlaylistAction;
+
+    public PlaylistPlayerUI() {
         setTitle("Music Player Playlist Management");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
@@ -60,6 +69,10 @@ public class MusicPlayerUI extends JFrame {
         add(removePlaylistButton);
         add(playlistsComboBox);
 
+        // Setup update action
+        updatePlaylistAction = this::updatePlaylistComboBox; // Reference to a method that updates the playlist combo box
+
+        // Add action listeners to buttons
         createPlaylistButton.addActionListener(this::createPlaylist);
         removePlaylistButton.addActionListener(this::removeSelectedPlaylist);
 
@@ -79,12 +92,19 @@ public class MusicPlayerUI extends JFrame {
         }
         try {
             Files.createDirectory(newPlaylistPath);
+            // Assuming you have a Playlist model that takes a name
+            Playlist newPlaylist = new Playlist(playlistName);
+            // Create a PlaylistView for the new playlist and bind update action
+            PlaylistView playlistView = new PlaylistView(newPlaylist, updatePlaylistAction::execute);
+
+            // Now add the playlist name to the UI
             playlistsModel.addElement(playlistName);
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(this, "Failed to create new playlist.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
 
     private void removeSelectedPlaylist(ActionEvent e) {
         String selectedPlaylist = (String) playlistsComboBox.getSelectedItem();
@@ -117,7 +137,15 @@ public class MusicPlayerUI extends JFrame {
         }
     }
 
+    private void createOrUpdatePlaylist(Playlist playlist) {
+        // Create a PlaylistView with a reference to the update action
+        PlaylistView playlistView = new PlaylistView(playlist, updatePlaylistAction);
+
+        // Now, whenever playlistView's update method is called, it will trigger updatePlaylistAction.execute(),
+        // which in turn calls updatePlaylistComboBox() to refresh the UI.
+    }
+
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new MusicPlayerUI().setVisible(true));
+        SwingUtilities.invokeLater(() -> new PlaylistPlayerUI().setVisible(true));
     }
 }

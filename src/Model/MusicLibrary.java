@@ -16,17 +16,15 @@ public class MusicLibrary
         this.subscribers = new ArrayList<>();
     }
 
-    public void addSong(Song song)
-    {
+    public void addSong(Song song) {
         this.songs.add(song);
+        notifySubscribers();
     }
 
-    public void removeSong(int index)
-    {
-        if(index >= 0 && index < songs.size() )
-        {
-            Song song = songs.remove(index);
-            // add notify method.
+    public void removeSong(int index) {
+        if(index >= 0 && index < songs.size()) {
+            songs.remove(index);
+            notifySubscribers(); // Notify subscribers about the change
         }
     }
 
@@ -48,11 +46,8 @@ public class MusicLibrary
     //The notifySubscribers method is marked as private because it's an internal mechanism for the MusicLibrary class
     // to update all its subscribers about changes. It is called whenever a song is added or removed from the library.
 
-    //Call this method whenever the library is updated
-    private void notifySubscriber(Song song)
-    {
-        for (LibraryObserver subscriber : subscribers)
-        {
+    private void notifySubscribers() {
+        for (LibraryObserver subscriber : subscribers) {
             subscriber.update();
         }
     }
