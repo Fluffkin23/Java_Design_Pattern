@@ -1,6 +1,5 @@
 package Observer;
 
-public interface LibraryObserver
-{
+public interface LibraryObserver {
     void update();
 }

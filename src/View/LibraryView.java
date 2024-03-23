@@ -10,25 +10,18 @@ public class LibraryView implements LibraryObserver
     public LibraryView(MusicLibrary library)
     {
         this.library = library;
-        this.library.subscribe(this); // Subscribe to library updates
     }
 
-    //This library is called when the library is updated
     @Override
-    public void update()
-    {
-
+    public void update() {
+        showLibrary(library);
     }
 
-    // Call this method to show the library in the UI
-    public void showLibrary(MusicLibrary library)
-    {
-        //Implementation code to display the library
+    public void showLibrary(MusicLibrary library) {
+        // Implementation code to display the library
     }
 
-    // Call this method to update the library in the GUI
-    public void updateLibrary()
-    {
-        showLibrary(library); //
+    public void updateLibrary() {
+        // Implementation code to update the view when the library changes
     }
 }
