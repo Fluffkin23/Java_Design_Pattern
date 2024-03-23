@@ -5,13 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de4d1ac3-037b-43fb-8449-e597cc8b86a2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Factory/MP3Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Factory/MP3Song.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Factory/WAVSong.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Factory/WAVSong.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/MusicLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MusicLibrary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Observer/LibraryObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Observer/LibraryObserver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Song.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/LibraryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/LibraryView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/MusicPlayerGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/CreateSong.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/Model/PlaylistTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Model/PlaylistTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +33,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.CreateSong.executor": "Run",
+    "Application.Main.executor": "Run",
     "Application.MusicPlayerGUI.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -74,21 +76,12 @@
       <workItem from="1711190340646" duration="1754000" />
       <workItem from="1711196911288" duration="507000" />
       <workItem from="1711209587447" duration="2344000" />
+      <workItem from="1711212049044" duration="35000" />
+      <workItem from="1711212096927" duration="578000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>11</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

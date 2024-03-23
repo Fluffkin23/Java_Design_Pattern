@@ -26,6 +26,15 @@ public class WAVSong implements Song
         // Implementation for pausing the song
     }
 
+    // Getter methods if needed
+    public String getTitle() {
+        return title;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
     @Override
     public String getDetails()
     {

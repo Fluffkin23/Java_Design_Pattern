@@ -26,6 +26,10 @@ public class MusicLibrary
                 .orElse(null);
     }
 
+    public List<Song> getSongs() {
+        return new ArrayList<>(songs); // Return a copy of the list to avoid external modification
+    }
+
     public void subscribe(LibraryObserver subscriber) {
         subscribers.add(subscriber);
     }

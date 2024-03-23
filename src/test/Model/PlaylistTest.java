@@ -42,6 +42,16 @@ class PlaylistTest {
             this.filePath = filePath;
         }
 
+        @Override
+        public String getTitle() {
+            return null;
+        }
+
+        @Override
+        public String getArtist() {
+            return null;
+        }
+
         // Additional methods or overrides for testing as needed
     }
 

@@ -6,5 +6,7 @@ public interface Song
     void pause();
     String getDetails();
     void setFilePath(String filePath);
+    String getTitle(); // Add this method
+    String getArtist(); // Add this method
 
 }
