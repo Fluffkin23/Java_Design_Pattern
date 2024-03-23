@@ -4,43 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de4d1ac3-037b-43fb-8449-e597cc8b86a2" name="Changes" comment="Added MVC structure">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Playlist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Observer/PlaylistObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Observer/PlaylistObserver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/PlaylistView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/PlaylistView.java" afterDir="false" />
-    </list>
+    <list default="true" id="de4d1ac3-037b-43fb-8449-e597cc8b86a2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="playlist-implementation" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2e5MucHSkaYIPZ9dUH2Yx59PUo4" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Run",
+    "Application.MusicPlayerGUI.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "playlist-implementation",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/rares/IdeaProjects/Java_Design_Pattern/src",
+    "last_opened_file_path": "C:/Users/costa/IdeaProjects/Java_Design_Pattern/src",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -52,35 +39,16 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
+      <recent name="C:\Users\costa\IdeaProjects\Java_Design_Pattern\src" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="PlaylistTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Java_Design_Pattern" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.Model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.Model" />
-      <option name="MAIN_CLASS_NAME" value="test.Model.PlaylistTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.PlaylistTest" />
-      </list>
-    </recent_temporary>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="View" />
+    </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-322ed176" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
       </set>
     </attachedChunks>
   </component>
@@ -93,48 +61,12 @@
       <option name="presentableId" value="Default" />
       <updated>1711190211119</updated>
       <workItem from="1711190212156" duration="105000" />
-      <workItem from="1711190474294" duration="859000" />
+      <workItem from="1711190340646" duration="936000" />
     </task>
-    <task id="LOCAL-00001" summary="Added MVC structure">
-      <option name="closed" value="true" />
-      <created>1711190645126</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1711190645126</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="origin/rares" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added MVC structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added MVC structure" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
