@@ -1,4 +1,10 @@
 package Strategy;
 
-public interface PlaybackStrategy {
+import Model.Song;
+
+import java.util.List;
+
+public interface PlaybackStrategy
+{
+    void execute(List<Song> songs);
 }
