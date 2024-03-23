@@ -114,53 +114,39 @@ public class MusicPlayerGUI
         saveSongButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Retrieve the title entered in the title text field.
                 String title = titleTextField.getText();
-                // Retrieve the artist name entered in the artist text field.
                 String artist = artistTextField.getText();
-                // Retrieve the file path of the selected file or set an empty string if no file is selected.
                 String filePath = selectedFile != null ? selectedFile.getAbsolutePath() : "";
 
-                // Check if the fileType has been set and that title, artist, and filePath are not empty.
                 if (fileType != null && !title.isEmpty() && !artist.isEmpty() && !filePath.isEmpty()) {
-                    // Initialize the factory creators for MP3 and WAV songs.
                     SongCreator mp3SongCreator = new MP3SongCreator();
                     SongCreator wavSongCreator = new WAVSongCreator();
 
-                    // Declare a variable to hold the created song.
                     Song song;
-                    // Check the fileType and use the corresponding creator to create the song.
                     if ("MP3".equals(fileType)) {
                         song = mp3SongCreator.createSong(title, artist, filePath);
                     } else {
                         song = wavSongCreator.createSong(title, artist, filePath);
                     }
 
-                    // Define the path to the Music folder in the user's home directory.
-                    String musicFolderPath = System.getProperty("user.home") + File.separator + "Music";
-                    // Create a File object for the Music folder.
-                    File musicFolder = new File(musicFolderPath);
-                    // Check if the Music folder exists, and if not, create it.
-                    if (!musicFolder.exists()) {
-                        musicFolder.mkdir();
+                    // Define the path to the MusicSong folder within your project directory.
+                    // You might need to adjust "./MusicSong" if your project structure requires it.
+                    String musicSongFolderPath = "./MusicSong";
+                    File musicSongFolder = new File(musicSongFolderPath);
+
+                    if (!musicSongFolder.exists()) {
+                        musicSongFolder.mkdir();
                     }
 
-                    // Sanitize the title to remove any characters that are not letters, numbers, dots, or hyphens.
-                    // Also, append the correct file extension based on the fileType.
-                    File songFile = new File(musicFolder, title.replaceAll("[^a-zA-Z0-9.-]", "_") + (fileType.equals("MP3") ? ".mp3" : ".wav"));
+                    File songFile = new File(musicSongFolder, title.replaceAll("[^a-zA-Z0-9.-]", "_") + (fileType.equals("MP3") ? ".mp3" : ".wav"));
                     try {
-                        // Copy the imported file to the new location in the Music folder.
                         Files.copy(Paths.get(filePath), songFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                        // Print to the console the details of the saved song and its location.
                         System.out.println("New song created: " + song.getDetails() + ", saved to: " + songFile.getAbsolutePath());
-                        // Show a dialog message confirming the song has been saved.
                         JOptionPane.showMessageDialog(frame, "Song saved: " + song.getDetails());
                     } catch (IOException ioException) {
-                        // If there's an error during file copying, show an error dialog.
                         JOptionPane.showMessageDialog(frame, "Error saving the song.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
-                    // If not all fields are filled, show an error dialog prompting the user to fill all fields.
                     JOptionPane.showMessageDialog(frame, "Please fill all fields and import a song.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
