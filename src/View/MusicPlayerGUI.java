@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
@@ -26,8 +27,10 @@ public class MusicPlayerGUI
     private JLabel filePathLabel; // Label to display the path of the imported file
     private File selectedFile; // File object to keep track of the selected song file
     private String fileType; // String to store the type of the selected file (MP3 or WAV)
+    private Path libraryPath = Paths.get(System.getProperty("user.home"), "Music", "Library");
 
     public MusicPlayerGUI() {
+
         // Create the frame
         JFrame frame = new JFrame("Music Player");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -136,18 +139,24 @@ public class MusicPlayerGUI
                         song = wavSongCreator.createSong(title, artist, filePath);
                     }
 
-                    // Define the path to the Music folder in the user's home directory.
-                    String musicFolderPath = System.getProperty("user.home") + File.separator + "Music";
-                    // Create a File object for the Music folder.
-                    File musicFolder = new File(musicFolderPath);
-                    // Check if the Music folder exists, and if not, create it.
-                    if (!musicFolder.exists()) {
-                        musicFolder.mkdir();
+                    // Define the path to the Library folder within the user's Music directory.
+                    String libraryFolderPath = System.getProperty("user.home") + File.separator + "Music" + File.separator + "Library";
+                    File libraryFolder = new File(libraryFolderPath);
+
+                    // Check if the Library folder exists, and if not, create it.
+                    if (!libraryFolder.exists()) {
+                        boolean isCreated = libraryFolder.mkdirs();
+                        if (!isCreated) {
+                            // If there's an error during the folder creation, show an error dialog.
+                            JOptionPane.showMessageDialog(frame, "Error creating the Library folder.", "Error", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
                     }
+
 
                     // Sanitize the title to remove any characters that are not letters, numbers, dots, or hyphens.
                     // Also, append the correct file extension based on the fileType.
-                    File songFile = new File(musicFolder, title.replaceAll("[^a-zA-Z0-9.-]", "_") + (fileType.equals("MP3") ? ".mp3" : ".wav"));
+                    File songFile = new File(libraryFolder, title.replaceAll("[^a-zA-Z0-9.-]", "_") + (fileType.equals("MP3") ? ".mp3" : ".wav"));
                     try {
                         // Copy the imported file to the new location in the Music folder.
                         Files.copy(Paths.get(filePath), songFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
@@ -170,6 +179,22 @@ public class MusicPlayerGUI
         frame.pack();
         frame.setLocationRelativeTo(null); // Center on screen
         frame.setVisible(true);
+    }
+
+    private void initializeLibraryFolder() {
+        // Define the path to the Library folder inside the user's Music directory
+        libraryPath = Paths.get(System.getProperty("user.home"), "Music", "Library");
+
+        // Check if the Library folder exists, and if not, create it
+        if (!Files.exists(libraryPath)) {
+            try {
+                Files.createDirectories(libraryPath); // Creates the directory if it doesn't exist
+                System.out.println("Library folder created at: " + libraryPath);
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Failed to create the Library directory.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 
     // Main method to start the GUI
