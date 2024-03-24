@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface PlaybackStrategy
 {
-    void execute(List<Song> songs);
+    void execute(List<Song> playlist, int currentSongIndex);
 }

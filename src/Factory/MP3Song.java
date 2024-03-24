@@ -1,5 +1,6 @@
 package Factory;
 
+import Controller.MusicController;
 import Model.Song;
 
 public class MP3Song implements Song
@@ -13,17 +14,6 @@ public class MP3Song implements Song
         this.title = title;
         this.artist = artist;
     }
-    @Override
-    public void play()
-    {
-        // Implementation for playing the song
-    }
-
-    @Override
-    public void pause()
-    {
-        // Implementation for pausing the song
-    }
 
     @Override
     public String getDetails()
@@ -35,6 +25,27 @@ public class MP3Song implements Song
     public void setFilePath(String filePath)
     {
         this.filePath = filePath;
+    }
+
+    @Override
+    public void play(MusicController controller) {
+
+    }
+
+    @Override
+    public void pause(MusicController controller)
+    {
+
+    }
+
+    @Override
+    public String getTitle() {
+        return null;
+    }
+
+    @Override
+    public String getArtist() {
+        return null;
     }
 
 }

@@ -19,6 +19,7 @@ public class MusicLibrary
     public void addSong(Song song)
     {
         this.songs.add(song);
+        notifySubscriber();
     }
 
     public void removeSong(int index)
@@ -49,7 +50,7 @@ public class MusicLibrary
     // to update all its subscribers about changes. It is called whenever a song is added or removed from the library.
 
     //Call this method whenever the library is updated
-    private void notifySubscriber(Song song)
+    private void notifySubscriber()
     {
         for (LibraryObserver subscriber : subscribers)
         {
