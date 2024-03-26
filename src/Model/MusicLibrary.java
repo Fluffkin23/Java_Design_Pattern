@@ -1,7 +1,10 @@
 package Model;
 
+import Factory.MP3Song;
+import Factory.WAVSong;
 import Observer.LibraryObserver;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +17,34 @@ public class MusicLibrary
     {
         this.songs = new ArrayList<>();
         this.subscribers = new ArrayList<>();
+        loadSongsFromFolder(); // Load initial songs from folder
+
+    }
+
+    public void loadSongsFromFolder()
+    {
+        File musicFolder = new File(System.getProperty("user.home"), "Music");
+        File[] files = musicFolder.listFiles((dir, name) -> name.endsWith(".mp3") || name.endsWith(".wav"));
+
+        if (files != null)
+        {
+            songs.clear(); // Clear existing songs list
+            for (File file : files)
+            {
+                String fileName = file.getName();
+                String baseName = fileName.substring(0, fileName.lastIndexOf('.'));
+                String[] parts = baseName.split(" - ", 2);
+                String artist = parts.length > 1 ? parts[0] : "Unknown Artist";
+                String title = parts.length > 1 ? parts[1] : parts[0];
+
+                Song song = fileName.endsWith(".mp3") ? new MP3Song(title, artist) : new WAVSong(title, artist);
+                song.setFilePath(file.getAbsolutePath());
+                songs.add(song);
+            }
+            notifySubscriber(); // Notify subscribers about the change
+
+        }
+
     }
 
     public void addSong(Song song)
