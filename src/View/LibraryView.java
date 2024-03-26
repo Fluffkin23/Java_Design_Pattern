@@ -1,29 +1,19 @@
 package View;
 
-import Model.MusicLibrary;
-import Observer.LibraryObserver;
+import javax.swing.*;
+import java.awt.*;
 
-public class LibraryView implements LibraryObserver
+public class LibraryView extends JPanel
 {
-    private MusicLibrary library;
-
-    public LibraryView(MusicLibrary library)
+    public LibraryView()
     {
-        this.library = library;
-        this.library.subscribe(this);
-    }
+        setLayout(new BorderLayout());
+        setBackground(new Color(255, 255, 255));
 
-    @Override
-    public void update() {
-        // Refresh the UI component that displays the library's songs
-        updateLibrary();
-    }
-
-    public void showLibrary(MusicLibrary library) {
-        // missing UI code to display the library's content
-    }
-
-    public void updateLibrary() {
-        showLibrary(library);
+        JList<String> songList = new JList<>(new String[]
+                {
+                        "Song 1", "Song 2", "Song 3"
+                });
+        add(new JScrollPane(songList), BorderLayout.CENTER);
     }
 }
