@@ -36,6 +36,17 @@ public class MusicLibrary
         return new ArrayList<>(songs); // Returns a copy of the list to prevent external modification.
     }
 
+    public Song getSongByIndex(int index)
+    {
+        if (index >= 0 && index < songs.size())
+        {
+            return songs.get(index);
+        } else {
+            // Handle the case where the index is out of bounds
+            throw new IndexOutOfBoundsException("No song at index: " + index);
+        }
+    }
+
     public void subscribe(LibraryObserver subscriber)
     {
         subscribers.add(subscriber);

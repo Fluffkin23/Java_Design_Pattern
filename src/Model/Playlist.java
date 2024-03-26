@@ -22,14 +22,16 @@ public class Playlist
     public void addSong(Song song)
     {
         songs.add(song);
+        notifyObservers();
     }
 
     public void removeSong(Song song)
     {
         songs.remove(song);
+        notifyObservers();
     }
 
-    public List<Song>getSongs()
+    public List<Song> getSongs()
     {
         return songs;
     }

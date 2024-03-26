@@ -19,7 +19,7 @@ public class LibraryView implements LibraryObserver
     public void update()
     {
         System.out.println("LibraryView is being updated.");
-        showLibrary(library);
+        updateLibrary();
     }
 
     // Call this method to show the library in the UI

@@ -28,8 +28,9 @@ public class MP3Song implements Song
     }
 
     @Override
-    public void play(MusicController controller) {
-
+    public void play()
+    {
+        System.out.println("I am playing from Song class");
     }
 
     @Override
@@ -40,12 +41,13 @@ public class MP3Song implements Song
 
     @Override
     public String getTitle() {
-        return null;
+        return this.title;
     }
 
     @Override
-    public String getArtist() {
-        return null;
+    public String getArtist()
+    {
+        return this.artist;
     }
 
 }

@@ -29,7 +29,7 @@ public class WAVSong implements Song
     }
 
     @Override
-    public void play(MusicController controller) {
+    public void play() {
 
     }
 
@@ -40,12 +40,14 @@ public class WAVSong implements Song
 
 
     @Override
-    public String getTitle() {
-        return null;
+    public String getTitle()
+    {
+        return this.title ;
     }
 
     @Override
-    public String getArtist() {
-        return null;
+    public String getArtist()
+    {
+        return this.artist;
     }
 }

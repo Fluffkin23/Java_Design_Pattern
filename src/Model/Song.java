@@ -7,7 +7,7 @@ public interface Song
 
     String getDetails();
     void setFilePath(String filePath);
-    void play(MusicController controller);
+    void play();
     void pause(MusicController controller);
 
 

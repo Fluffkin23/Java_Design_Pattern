@@ -1,4 +1,6 @@
 package Observer;
 
-public interface MusicControllerObserver {
+public interface MusicControllerObserver
+{
+    void update();
 }
