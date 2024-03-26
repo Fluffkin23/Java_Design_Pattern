@@ -19,7 +19,7 @@ public class Playlist
         this.observers = new ArrayList<>();
     }
 
-    public List<Song> createPlaylist()
+
 
     public void addSong(Song song)
     {

@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="de4d1ac3-037b-43fb-8449-e597cc8b86a2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/MusicLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MusicLibrary.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Playlist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/LibraryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/LibraryView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/MusicPlayerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MusicPlayerUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/PlaylistView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/PlaylistView.java" afterDir="false" />
     </list>
@@ -35,26 +33,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.LibraryView.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.MusicPlayerUI.executor": "Run",
-    "Application.PlaylistView.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/costa/IdeaProjects/Java_Design_Pattern/src/img",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/costa/IdeaProjects/Java_Design_Pattern/src/Main.java",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.LibraryView.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MusicPlayerUI.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PlaylistView.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/costa/IdeaProjects/Java_Design_Pattern/src/img&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/costa/IdeaProjects/Java_Design_Pattern/src/Main.java&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\costa\IdeaProjects\Java_Design_Pattern\src\img" />
@@ -127,6 +125,7 @@
       <workItem from="1711221980166" duration="4373000" />
       <workItem from="1711452484762" duration="11063000" />
       <workItem from="1711473359044" duration="8363000" />
+      <workItem from="1711490350617" duration="4387000" />
     </task>
     <servers />
   </component>
