@@ -9,7 +9,7 @@ public class MusicPlayerUI extends JFrame {
     {
         // Set up the main window
         setTitle("Spotify-Like App");
-        setSize(500, 500); // Set the size of the app
+        setSize(650, 650); // Set the size of the app
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // Center the window
 
