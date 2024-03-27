@@ -10,10 +10,11 @@ public class WAVSong implements Song
 
     private String filePath;
 
-    public WAVSong(String title, String artist)
+    public WAVSong(String title, String artist,String filePath)
     {
         this.title = title;
         this.artist = artist;
+        this.filePath = filePath;
     }
 
     @Override
@@ -26,6 +27,11 @@ public class WAVSong implements Song
     public void setFilePath(String filePath)
     {
         this.filePath = filePath;
+    }
+
+    @Override
+    public String getFilePath() {
+        return this.filePath;
     }
 
     @Override

@@ -101,15 +101,15 @@ public class Main {
 //        ui.displayPlaylist(myPlaylist);
 // ------------------------------------------------- Playback Strategy -------------------------------------------------
 
-        Playlist myPlaylist = new Playlist("Repeat");
-
-        myPlaylist.addSong(new MP3Song("Song 1", "Artist A"));
-        myPlaylist.addSong(new MP3Song("Song 2", "Artist B"));
-        myPlaylist.addSong(new WAVSong("Song 3", "Artist C"));
-
-        // Set the playback strategy to Shuffle and execute it
-        PlaybackStrategy shuffleStrategy = new ShufflePlayback();
-        shuffleStrategy.execute(myPlaylist.getSongs());
+//        Playlist myPlaylist = new Playlist("Repeat");
+//
+//        myPlaylist.addSong(new MP3Song("Song 1", "Artist A"));
+//        myPlaylist.addSong(new MP3Song("Song 2", "Artist B"));
+//        myPlaylist.addSong(new WAVSong("Song 3", "Artist C"));
+//
+//        // Set the playback strategy to Shuffle and execute it
+//        PlaybackStrategy shuffleStrategy = new ShufflePlayback();
+//        shuffleStrategy.execute(myPlaylist.getSongs());
 
     }
 }

@@ -9,10 +9,11 @@ public class MP3Song implements Song
     private String artist;
     private String filePath;
 
-    public MP3Song(String title, String artist)
+    public MP3Song(String title, String artist, String filePath)
     {
         this.title = title;
         this.artist = artist;
+        this.filePath = filePath;
     }
 
     @Override
@@ -26,6 +27,13 @@ public class MP3Song implements Song
     {
         this.filePath = filePath;
     }
+
+    @Override
+    public String getFilePath()
+    {
+        return this.filePath;
+    }
+
 
     @Override
     public void play()

@@ -1,15 +1,12 @@
 package View;
 
-import Factory.MP3Song;
-import Factory.WAVSong;
+import Controller.MusicController;
 import Model.Playlist;
-import Model.PlaylistManager;
 import Model.Song;
 import Observer.PlaylistObserver;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
 
 
 public class PlaylistView extends JPanel implements PlaylistObserver
@@ -23,12 +20,12 @@ public class PlaylistView extends JPanel implements PlaylistObserver
     private JButton refreshButton;
     private JList<String> playlistList;
     private DefaultListModel<String> playlistModel;
-    private PlaylistManager playlistManager;
+    private MusicController musicController;
 
 
-    public PlaylistView(PlaylistManager playlistManager, Playlist playlist)
+    public PlaylistView(MusicController controller, Playlist playlist)
     {
-        this.playlistManager = playlistManager;
+        this.musicController = controller;
         if (playlist != null)
         {
             this.playlist = playlist;
@@ -67,13 +64,17 @@ public class PlaylistView extends JPanel implements PlaylistObserver
         createPlaylistButton.addActionListener(e ->
         {
             String newPlaylistName = JOptionPane.showInputDialog("Enter new playlist name:");
-            if (newPlaylistName != null && !newPlaylistName.trim().isEmpty()) {
-                Playlist newPlaylist = playlistManager.createPlaylist(newPlaylistName.trim());
-                if (newPlaylist != null) {
+            if (newPlaylistName != null && !newPlaylistName.trim().isEmpty())
+            {
+                Playlist newPlaylist = musicController.createPlaylist(newPlaylistName.trim());
+                if (newPlaylist != null)
+                {
                     playlistsComboBox.addItem(newPlaylistName.trim());
                     playlistsComboBox.setSelectedItem(newPlaylistName.trim());
                     setPlaylist(newPlaylist);
-                } else {
+                }
+                else
+                {
                     JOptionPane.showMessageDialog(null, "A playlist with this name already exists.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
@@ -86,7 +87,7 @@ public class PlaylistView extends JPanel implements PlaylistObserver
         playlistsComboBox.addActionListener(e ->
         {
             String selectedPlaylistName = (String) playlistsComboBox.getSelectedItem();
-            Playlist selectedPlaylist = playlistManager.getPlaylist(selectedPlaylistName);
+            Playlist selectedPlaylist = musicController.getPlaylist(selectedPlaylistName);
             setPlaylist(selectedPlaylist);
         });
 
@@ -99,18 +100,20 @@ public class PlaylistView extends JPanel implements PlaylistObserver
 
     public void loadPlaylistNamesIntoComboBox() {
         playlistsComboBox.removeAllItems(); // Clear existing entries if any
-        for (String playlistName : playlistManager.getPlaylistNames()) {
+        for (String playlistName : musicController.getPlaylistName()) {
             playlistsComboBox.addItem(playlistName);
         }
     }
 
     public void setPlaylist(Playlist playlist)
     {
-        if (this.playlist != null) {
+        if (this.playlist != null)
+        {
             this.playlist.unsubscribe(this);
         }
         this.playlist = playlist;
-        if (playlist != null) {
+        if (playlist != null)
+        {
             playlist.subscribe(this); // Subscribe to the new playlist
             update(); // Update the view
         }

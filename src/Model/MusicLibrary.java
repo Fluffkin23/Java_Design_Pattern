@@ -36,9 +36,9 @@ public class MusicLibrary
                 String[] parts = baseName.split(" - ", 2);
                 String artist = parts.length > 1 ? parts[0] : "Unknown Artist";
                 String title = parts.length > 1 ? parts[1] : parts[0];
+                String filePath = file.getAbsolutePath();
 
-                Song song = fileName.endsWith(".mp3") ? new MP3Song(title, artist) : new WAVSong(title, artist);
-                song.setFilePath(file.getAbsolutePath());
+                Song song = fileName.endsWith(".mp3") ? new MP3Song(title, artist,filePath) : new WAVSong(title, artist,filePath);
                 songs.add(song);
             }
             notifySubscriber(); // Notify subscribers about the change

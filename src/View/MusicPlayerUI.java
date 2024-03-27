@@ -3,7 +3,6 @@ package View;
 import Controller.MusicController;
 import Model.MusicLibrary;
 import Model.Playlist;
-import Model.PlaylistManager;
 import Model.Song;
 import Observer.MusicControllerObserver;
 
@@ -16,15 +15,12 @@ public class MusicPlayerUI extends JFrame implements MusicControllerObserver
     private MusicController musicController;
     private JLabel trackTitle, trackInfo;
     private ImageIcon albumArtLabel;
-    private PlaylistManager playlistManager; // Add playlistManager as a class member
 
 
     public MusicPlayerUI(MusicController musicController)
     {
         this.musicController = musicController;
         musicController.subscribe(this);
-        this.playlistManager = new PlaylistManager(); // Initialize once here
-
         initializeUI();
     }
 
@@ -46,13 +42,13 @@ public class MusicPlayerUI extends JFrame implements MusicControllerObserver
 
     private void initializeLibraryTab(JTabbedPane tabbedPane)
     {
-        LibraryView libraryView = new LibraryView(musicController.getMusicLibrary());
+        LibraryView libraryView = new LibraryView(musicController);
         tabbedPane.addTab("Library", libraryView);
     }
 
     private void initializePlaylistTab(JTabbedPane tabbedPane)
     {
-        PlaylistView playlistView = new PlaylistView(playlistManager, playlistManager.getPlaylist("Default Playlist"));// Use the class member
+        PlaylistView playlistView = new PlaylistView(musicController, musicController.getPlaylist("Default Playlist"));// Use the class member
         tabbedPane.addTab("Playlist", playlistView);
         playlistView.loadPlaylistNamesIntoComboBox(); // Make sure to call this method
 

@@ -6,7 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="de4d1ac3-037b-43fb-8449-e597cc8b86a2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Playlist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MusicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MusicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Factory/MP3Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Factory/MP3Song.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Factory/MP3SongCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Factory/MP3SongCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Factory/WAVSong.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Factory/WAVSong.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Factory/WAVSongCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Factory/WAVSongCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/MusicLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MusicLibrary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/PlaylistManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Song.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/LibraryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/LibraryView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/MusicPlayerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MusicPlayerUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/PlaylistView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/PlaylistView.java" afterDir="false" />
     </list>
@@ -58,7 +67,7 @@
       <recent name="C:\Users\costa\IdeaProjects\Java_Design_Pattern\src\img" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MusicPlayerUI">
+  <component name="RunManager">
     <configuration name="LibraryView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="View.LibraryView" />
       <module name="Java_Design_Pattern" />
@@ -100,8 +109,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MusicPlayerUI" />
         <item itemvalue="Application.LibraryView" />
+        <item itemvalue="Application.MusicPlayerUI" />
         <item itemvalue="Application.PlaylistView" />
       </list>
     </recent_temporary>
@@ -126,6 +135,7 @@
       <workItem from="1711452484762" duration="11063000" />
       <workItem from="1711473359044" duration="8363000" />
       <workItem from="1711490350617" duration="4387000" />
+      <workItem from="1711525510612" duration="5140000" />
     </task>
     <servers />
   </component>

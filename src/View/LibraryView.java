@@ -1,5 +1,6 @@
 package View;
 
+import Controller.MusicController;
 import Factory.MP3Song;
 import Factory.WAVSong;
 import Model.MusicLibrary;
@@ -17,11 +18,12 @@ public class LibraryView extends JPanel implements LibraryObserver
     private JComboBox<String> playlistsComboBox;
     private DefaultListModel<String> songListModel; // Model for the list of songs
     private JList<String> songList; // View for the list of songs
+    private MusicController musicController;
 
-    public LibraryView(MusicLibrary library)
+    public LibraryView(MusicController musicController)
     {
-        this.library = library;
-        this.library.subscribe(this);
+        this.musicController = musicController;
+        this.musicController.getMusicLibrary().subscribe(this);
         initializeUI();
 
     }
@@ -43,14 +45,39 @@ public class LibraryView extends JPanel implements LibraryObserver
         addButton = new JButton("Add to Playlist");
         addPanel.add(addButton);
 
+        addButton.addActionListener(e ->
+        {
+            String selectedSongTitle = songList.getSelectedValue();
+            if (selectedSongTitle != null && playlistsComboBox.getSelectedItem() != null) {
+                String playlistName = (String) playlistsComboBox.getSelectedItem();
+                Song selectedSong = musicController.getMusicLibrary().getSongs().stream()
+                        .filter(song -> (song.getTitle() + " by " + song.getArtist()).equals(selectedSongTitle))
+                        .findFirst().orElse(null);
+
+                if (selectedSong != null) {
+                    musicController.addSongToPlaylist(selectedSong, playlistName);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Song not found.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
 
 
         // Initialize and add the combo box for selecting playlists
         playlistsComboBox = new JComboBox<>();
         addPanel.add(playlistsComboBox);
 
+        playlistsComboBox.removeAllItems(); // Clear existing items
+        for (String playlistName : musicController.getPlaylistName()) {
+            playlistsComboBox.addItem(playlistName);
+        }
+
+
+
+
         refreshButton = new JButton("Refresh Library");
-        refreshButton.addActionListener(e -> library.loadSongsFromFolder());
+        refreshButton.addActionListener(e -> musicController.getMusicLibrary().loadSongsFromFolder());
         addPanel.add(refreshButton);
 
 
@@ -73,7 +100,7 @@ public class LibraryView extends JPanel implements LibraryObserver
     public void showLibrary()
     {
         songListModel.clear(); // Clear the existing list
-        for (Song song : library.getSongs())
+        for (Song song : musicController.getMusicLibrary().getSongs())
         {
             songListModel.addElement(song.getTitle() + " by " + song.getArtist());
         }
@@ -102,14 +129,15 @@ public class LibraryView extends JPanel implements LibraryObserver
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Create a MusicLibrary and populate it with some songs
-        MusicLibrary library = new MusicLibrary();
-        library.addSong(new MP3Song("Song 1", "Artist A"));
-        library.addSong(new MP3Song("Song 2", "Artist B"));
-        library.addSong(new WAVSong("Song 3", "Artist C"));
+
+        MusicController musicController1 = new MusicController();
+        musicController1.addSongLibrary(new MP3Song("Song 1", "Artist A",""));
+        musicController1.addSongLibrary(new MP3Song("Song 2", "Artist B",""));
+        musicController1.addSongLibrary(new WAVSong("Song 3", "Artist C",""));
         // Assume MusicLibrary has an addSong() method
 
         // Create the LibraryView, passing in the music library
-        LibraryView libraryView = new LibraryView(library);
+        LibraryView libraryView = new LibraryView(musicController1);
 
         // Add the LibraryView to the JFrame
         frame.add(libraryView);
