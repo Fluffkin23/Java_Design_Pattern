@@ -8,6 +8,7 @@ import Observer.MusicControllerObserver;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 
 public class MusicPlayerUI extends JFrame implements MusicControllerObserver
@@ -40,10 +41,11 @@ public class MusicPlayerUI extends JFrame implements MusicControllerObserver
         tabbedPane.addTab("Add Song", songView);
     }
 
-    private void initializeLibraryTab(JTabbedPane tabbedPane)
+    private LibraryView initializeLibraryTab(JTabbedPane tabbedPane)
     {
         LibraryView libraryView = new LibraryView(musicController);
         tabbedPane.addTab("Library", libraryView);
+        return libraryView;
     }
 
     private void initializePlaylistTab(JTabbedPane tabbedPane)
@@ -112,7 +114,43 @@ public class MusicPlayerUI extends JFrame implements MusicControllerObserver
         controlsPanel.setBackground(new Color(0, 0, 0));
         controlsPanel.add(new JButton("Shuffle"));
         controlsPanel.add(new JButton("Previous"));
-        controlsPanel.add(new JButton("Play"));
+        JButton playButton = new JButton("Play");
+        JButton loadPlaylistButton = new JButton("Load Playlist");
+        controlsPanel.add(loadPlaylistButton); // Assuming controlsPanel is where you want the button
+
+        loadPlaylistButton.addActionListener(e -> {
+            JFileChooser fileChooser = new JFileChooser(System.getProperty("user.home") + "/Music");
+            fileChooser.setDialogTitle("Select Playlist Folder");
+            fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            fileChooser.setAcceptAllFileFilterUsed(false);
+            int returnValue = fileChooser.showOpenDialog(null);
+            if (returnValue == JFileChooser.APPROVE_OPTION) {
+                File selectedFolder = fileChooser.getSelectedDirectory();
+                // Assuming you have a method in musicController to load and play a playlist by folder
+                musicController.loadAndPlayPlaylist(selectedFolder);
+            }
+        });
+
+
+
+        controlsPanel.add(playButton);
+
+        playButton.addActionListener(e ->
+        {
+            LibraryView libraryView = initializeLibraryTab(tabbedPane);
+            String selectedPlaylistName =libraryView.getSelectedPlaylist() ;
+            Playlist selectedPlaylist = musicController.getPlaylist(selectedPlaylistName);
+
+            if(selectedPlaylist != null)
+            {
+                musicController.playPlaylist(selectedPlaylist);
+            }
+            else
+            {
+                System.out.println("Playlist not found" + selectedPlaylist);
+            }
+        });
+
         controlsPanel.add(new JButton("Next"));
         controlsPanel.add(new JButton("Repeat"));
 
@@ -147,10 +185,16 @@ public class MusicPlayerUI extends JFrame implements MusicControllerObserver
     @Override
     public void update()
     {
-        // Update UI components based on the state of the music controller
-        // For instance, update track title, artist, album art, etc.
+        displayLibrary(musicController.getMusicLibrary());
 
     }
+
+    @Override
+    public void onSongChange(Song currentSong) {
+        // Update the UI with the current song's details
+        trackTitle.setText(currentSong.getTitle() + " - " + currentSong.getArtist());
+    }
+
 
     public void displayPlaylist(Playlist playlist)
     {
@@ -175,7 +219,8 @@ public class MusicPlayerUI extends JFrame implements MusicControllerObserver
     // for testing GUI
     public static void main(String[] args)
     {
-        MusicController controller = new MusicController();
+        MusicLibrary musicLibrary = new MusicLibrary();
+        MusicController controller = new MusicController(musicLibrary);
         // Make sure controller is initialized with a Playlist
         Playlist playlist = new Playlist("Favourite"); // Assuming you have a default constructor
         // Populate your playlist if necessary

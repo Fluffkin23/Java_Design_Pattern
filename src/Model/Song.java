@@ -9,7 +9,8 @@ public interface Song
     void setFilePath(String filePath);
     String getFilePath();
     void play();
-    void pause(MusicController controller);
+    void pause();
+    void stop();
 
 
     String getTitle();

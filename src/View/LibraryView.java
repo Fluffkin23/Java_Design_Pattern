@@ -1,7 +1,7 @@
 package View;
 
 import Controller.MusicController;
-import Factory.MP3Song;
+import Factory.AIFFSong;
 import Factory.WAVSong;
 import Model.MusicLibrary;
 import Model.Song;
@@ -15,6 +15,9 @@ public class LibraryView extends JPanel implements LibraryObserver
     private MusicLibrary library;
     private JButton addButton;
     private JButton refreshButton;
+    private JButton playButton;
+    private JButton pauseButton;
+    private JButton stopButton;
     private JComboBox<String> playlistsComboBox;
     private DefaultListModel<String> songListModel; // Model for the list of songs
     private JList<String> songList; // View for the list of songs
@@ -80,12 +83,38 @@ public class LibraryView extends JPanel implements LibraryObserver
         refreshButton.addActionListener(e -> musicController.getMusicLibrary().loadSongsFromFolder());
         addPanel.add(refreshButton);
 
+        playButton = new JButton("Play");
+        addPanel.add(playButton);
+        playButton.addActionListener(e ->
+        {
+            String selectedSongTitle = songList.getSelectedValue(); // Assuming song titles are unique
+            if (selectedSongTitle != null && !selectedSongTitle.isEmpty()) {
+                musicController.playSongByTitle(selectedSongTitle.split("by",2)[0].trim());
+                System.out.println(selectedSongTitle);
+            }
+        });
+
+         pauseButton = new JButton("Pause");
+         addPanel.add(pauseButton);
+
+        pauseButton.addActionListener(e -> musicController.pauseCurrentSong());
+
+        stopButton = new JButton("Pause");
+        stopButton.addActionListener(e -> musicController.stopCurrentSong());
+        addPanel.add(stopButton);
+
+
 
 
         // Add the addPanel to the bottom of the LibraryView
         add(addPanel, BorderLayout.SOUTH);
 
         updateLibrary(); // Initial update to populate the list
+    }
+
+    public String getSelectedPlaylist()
+    {
+        return (String) playlistsComboBox.getSelectedItem();
     }
 
     //This library is called when the library is updated
@@ -120,31 +149,31 @@ public class LibraryView extends JPanel implements LibraryObserver
         // and updating the view accordingly.
         showLibrary(); //
     }
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> createAndShowGUI());
-    }
-    private static void createAndShowGUI() {
-        // Create the main window (JFrame) for the application
-        JFrame frame = new JFrame("Library View Test");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // Create a MusicLibrary and populate it with some songs
-
-        MusicController musicController1 = new MusicController();
-        musicController1.addSongLibrary(new MP3Song("Song 1", "Artist A",""));
-        musicController1.addSongLibrary(new MP3Song("Song 2", "Artist B",""));
-        musicController1.addSongLibrary(new WAVSong("Song 3", "Artist C",""));
-        // Assume MusicLibrary has an addSong() method
-
-        // Create the LibraryView, passing in the music library
-        LibraryView libraryView = new LibraryView(musicController1);
-
-        // Add the LibraryView to the JFrame
-        frame.add(libraryView);
-
-        // Set the size, and then display the JFrame
-        frame.setSize(400, 300);
-        frame.setVisible(true);
-    }
+//    public static void main(String[] args) {
+//        SwingUtilities.invokeLater(() -> createAndShowGUI());
+//    }
+//    private static void createAndShowGUI() {
+//        // Create the main window (JFrame) for the application
+//        JFrame frame = new JFrame("Library View Test");
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//
+//        // Create a MusicLibrary and populate it with some songs
+//
+//        MusicController musicController1 = new MusicController();
+//        musicController1.addSongLibrary(new AIFFSong("Song 1", "Artist A",""));
+//        musicController1.addSongLibrary(new AIFFSong("Song 2", "Artist B",""));
+//        musicController1.addSongLibrary(new WAVSong("Song 3", "Artist C",""));
+//        // Assume MusicLibrary has an addSong() method
+//
+//        // Create the LibraryView, passing in the music library
+//        LibraryView libraryView = new LibraryView(musicController1);
+//
+//        // Add the LibraryView to the JFrame
+//        frame.add(libraryView);
+//
+//        // Set the size, and then display the JFrame
+//        frame.setSize(400, 300);
+//        frame.setVisible(true);
+//    }
 
 }

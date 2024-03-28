@@ -150,29 +150,4 @@ public class PlaylistView extends JPanel implements PlaylistObserver
     {
         showPlaylist();
     }
-
-//    public static void main(String[] args)
-//    {
-//        // Run the GUI construction in the Event-Dispatching thread for thread-safety.
-//        SwingUtilities.invokeLater(() -> {
-//            // Create the main window (a JFrame)
-//            JFrame frame = new JFrame("Playlist View Test");
-//
-//            // Create a Playlist and populate it with example data
-//            Playlist playlist = new Playlist("Favourite");
-//            playlist.addSong(new MP3Song("Song 1", "Artist A"));
-//            playlist.addSong(new MP3Song("Song 2", "Artist B"));
-//            playlist.addSong(new WAVSong("Song 3", "Artist C"));
-//
-//            // Create an instance of PlaylistView with the playlist
-//            PlaylistView playlistView = new PlaylistView(playlist);
-//
-//            // Add the PlaylistView to the main window
-//            frame.add(playlistView);
-//            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//            frame.setSize(400, 300); // Set the size of the main window
-//            frame.setVisible(true); // Make the window visible
-//        });
-//    }
-
 }

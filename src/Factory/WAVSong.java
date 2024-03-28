@@ -11,6 +11,8 @@ public class WAVSong implements Song
 {
     private String title;
     private String artist;
+    private Clip clip = null;
+    private boolean isPaused = false;
 
     private String filePath;
 
@@ -41,28 +43,42 @@ public class WAVSong implements Song
     @Override
     public void play()
     {
-        // Implementation for playing WAV files
-        try (AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File(filePath)))
-        {
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioStream);
-            clip.start();
-            while (!clip.isRunning())
-                Thread.sleep(10);
-            while (clip.isRunning())
-                Thread.sleep(10);
-            clip.close();
-        }
-        catch (UnsupportedAudioFileException | IOException | LineUnavailableException | InterruptedException e)
-        {
-            e.printStackTrace();
-        }
-
+        if (clip == null) { // First time play is called
+            try (AudioInputStream audioStream = AudioSystem.getAudioInputStream(new File(filePath))) {
+                clip = AudioSystem.getClip();
+                clip.open(audioStream);
+                clip.start();
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                e.printStackTrace();
+            }
+        } else if (isPaused) { // If the song was paused
+            clip.start(); // Resume playing
+            isPaused = false;
+        } // No need for an else block if the song is already playing
     }
 
     @Override
-    public void pause(MusicController controller) {
+    public void pause()
+    {
+        if (clip != null)
+        {
+            clip.stop();
+            clip.close();
+            clip = null; // Ready the song to be played from the beginning next time
+            isPaused = false;
+        }
+    }
 
+    @Override
+    public void stop()
+    {
+        if (clip != null)
+        {
+            clip.stop();
+            clip.close();
+            clip = null; // Ready the song to be played from the beginning next time
+            isPaused = false;
+        }
     }
 
 

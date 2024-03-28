@@ -1,6 +1,6 @@
 package Controller;
 
-import Factory.MP3Song;
+import Factory.AIFFSong;
 import Factory.WAVSong;
 import Model.MusicLibrary;
 import Model.Playlist;
@@ -18,21 +18,75 @@ public class MusicController
 {
 
     private MusicLibrary musicLibrary;
+    private Song currentSong1; // This holds the currently playing song
+
     private Playlist currentPlaylist;
-    private int currentSong = -1; // Assuming -1 means no song is selected
+    private Song currentSong = null;
 
     private List<MusicControllerObserver> observers = new ArrayList<>();
     private Map<String, Playlist> playlists = new HashMap<>();
     private final File musicDirectory = new File(System.getProperty("user.home"), "Music");
+    private String currentPlaylistName = null; // Initialized to null or a default playlist name
 
 
 
-    public MusicController()
+
+    public MusicController(MusicLibrary library)
     {
-        musicLibrary = new MusicLibrary();
         playlists = new HashMap<>();
         loadPlaylistsFromDirectory();
+        this.musicLibrary = library;
 
+    }
+//------------------------------------------MusicLibrary----------------------------------------------------------------
+
+    public void playSongByTitle(String title)
+    {
+        // Utilizes the Java Stream API to search through a collection of Song objects (returned by getSongs()).
+        // The filter operation is applied to stream elements to select songs whose title matches the specified 'title'.
+        Song songToPlay = getMusicLibrary().getSongs().stream()
+                .filter(song -> song.getTitle().equals(title))
+                .findFirst() // Attempts to find the first song that matches the filter condition.
+                .orElse(null);// If no song matches the filter condition, 'orElse(null)' ensures that songToPlay
+        // is set to null instead of throwing an error.
+
+        // Checks if a song matching the title was found.
+        if (songToPlay != null)
+        {
+            // If a song was found, its play() method is called to start playback.
+            songToPlay.play();
+            currentSong = songToPlay;
+        }
+        else
+        {
+            // If no song matching the title was found, a message is printed to the console indicating that the song was not found.
+            System.out.println("Song not found: " + title);
+        }
+    }
+
+    public void pauseCurrentSong()
+    {
+        if (currentSong != null)
+        {
+            currentSong.pause(); // Pause the song
+        }
+    }
+
+    public void stopCurrentSong()
+    {
+        if (currentSong != null)
+        {
+            currentSong.stop(); // Stop the song
+            currentSong = null; // Clear the currently playing song
+        }
+    }
+
+    public void playPlaylist(Playlist playlist) {
+        // Iterate through playlist and play each song
+        for (Song song : playlist.getSongs()) {
+                song.play();
+            // Add a delay or a mechanism to wait for the song to finish before playing the next one
+        }
     }
 
     // Getters and setters
@@ -52,16 +106,31 @@ public class MusicController
         this.musicLibrary.addSong(song);
     }
 
-    public Playlist getCurrentPlaylist()
-    {
-        return currentPlaylist;
-    }
 
     public void setCurrentPlaylist(Playlist currentPlaylist)
     {
         this.currentPlaylist = currentPlaylist;
         notifySubscribers();
     }
+
+    public void loadAndPlayPlaylist(File playlistFolder)
+    {
+        Playlist newPlaylist = new Playlist(playlistFolder.getName());
+        File[] songFiles = playlistFolder.listFiles((dir, name) -> name.endsWith(".mp3") || name.endsWith(".wav"));
+
+        if (songFiles != null)
+        {
+            for (File songFile : songFiles)
+            {
+                // Assuming you have a method to create a Song object from a file
+                Song song = createSongFromFile(songFile);
+                newPlaylist.addSong(song);
+            }
+            setCurrentPlaylist(newPlaylist); // Set the new playlist as current
+            playPlaylist(newPlaylist); // Play the newly loaded playlist
+        }
+    }
+
 
     private void loadPlaylistsFromDirectory()
     {
@@ -76,7 +145,7 @@ public class MusicController
         for( File playlistDir : playlistDirectories)
         {
             Playlist playlist = new Playlist(playlistDir.getName());
-            File[] songFiles = playlistDir.listFiles((dir, name) -> name.endsWith(".mp3") || name.endsWith(".wav"));
+            File[] songFiles = playlistDir.listFiles((dir, name) -> name.endsWith(".aiff") || name.endsWith(".wav"));
             if(songFiles != null )
             {
                 for(File songFile : songFiles)
@@ -122,8 +191,8 @@ public class MusicController
 
                 // Update your playlist object as necessary, possibly with the new file path
 
-                if (fileName.endsWith(".mp3")) {
-                    song = new MP3Song(title, artist, filePath);
+                if (fileName.endsWith(".aiff")) {
+                    song = new AIFFSong(title, artist, filePath);
                 } else if (fileName.endsWith(".wav")) {
                     song = new WAVSong(title, artist, filePath);
                 } else {
@@ -132,6 +201,7 @@ public class MusicController
                 }
 
                 playlist.addSong(song);
+                notifySubscribers();
                 return true;
 
             }
@@ -167,8 +237,8 @@ public class MusicController
         String title = parts.length > 1 ? parts[1] : parts[0];
         String filePath = songFile.getAbsolutePath();
 
-        return fileName.endsWith(".mp3") ?
-                new MP3Song(title, artist,filePath) :
+        return fileName.endsWith(".aiff") ?
+                new AIFFSong(title, artist,filePath) :
                 new WAVSong(title, artist,filePath);
     }
 
@@ -189,20 +259,35 @@ public class MusicController
         return newPlaylist;
     }
 
+    private void loadPlaylistFromFolder(File folder)
+    {
+        Playlist newPlaylist = new Playlist(folder.getName());
+        for(File file : folder.listFiles())
+        {
+            if (file.isFile() && (file.getName().endsWith(".mp3") || file.getName().endsWith(".wav")))
+            {
+
+            }
+        }
+    }
+
     public Playlist getPlaylist(String name)
     {
         return this.playlists.get(name);
     }
 
-    public int getCurrentSong()
+    public Playlist getCurrentPlaylist()
     {
-        return currentSong;
+        if (currentPlaylistName != null) {
+            return getPlaylist(currentPlaylistName);
+        }
+        return null;
     }
 
-    public void setCurrentSong(int currentSong)
-    {
-        this.currentSong = currentSong;
-        notifySubscribers();
+
+    public void setCurrentPlaylistName(String name) {
+        this.currentPlaylistName = name;
+        // Additional logic might be added here, such as loading the playlist's songs
     }
 
     // Observer-related methods
@@ -221,27 +306,22 @@ public class MusicController
         for (MusicControllerObserver observer : observers)
         {
             observer.update();
+            observer.onSongChange(currentSong);
+
         }
     }
 
 
-    public void selectSong(int song)
+    public void selectSong(Song song)
     {
-        currentSong = song;
+
         notifySubscribers();
     }
 
     public void playSong()
     {
-        if(currentSong >= 0)
-        {
-            // Logic to play the song
-           System.out.println( musicLibrary.getSongByIndex(currentSong).getTitle() );
-            musicLibrary.getSongByIndex(currentSong).play();
             notifySubscribers();
-            // This would involve more complex logic, potentially involving Java's sound API.
-        }
-
+            // This would involve more complex logic, potentially involving Java's sound API
     }
 
     // Method to pause a song
