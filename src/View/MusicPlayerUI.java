@@ -12,10 +12,6 @@ import java.io.File;
 
 public class MusicPlayerUI extends JFrame implements MusicControllerObserver {
     private MusicController musicController;
-
-    private static final int WINDOW_WIDTH = 650;
-    private static final int WINDOW_HEIGHT = 650;
-    private static final String TITLE = "Spotify-Like App";
     private JLabel trackTitleLabel;
     private JLabel trackInfoLabel;
     private JButton loadPlaylist;
@@ -24,13 +20,12 @@ public class MusicPlayerUI extends JFrame implements MusicControllerObserver {
         this.musicController = musicController;
         musicController.subscribe(this);
         initializeGUI();
-
     }
 
     public void initializeGUI() {
         // Set up the main window
         setTitle("The Best Music Player");
-        setSize(800, 800); // Set the size of the app
+        setSize(1200, 800); // Set the size of the app
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // Center the window
 
@@ -200,7 +195,7 @@ public class MusicPlayerUI extends JFrame implements MusicControllerObserver {
         trackTitleLabel.setText(title);
         trackInfoLabel.setText("Track info: " + artist);
     }
-    
+
     public static void main(String[] args) {
         MusicController musicController1 = new MusicController();
 
