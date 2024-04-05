@@ -2,6 +2,8 @@ package Factory;
 
 import Model.Song;
 
+import java.io.File;
+
 public class AIFFSong implements Song
 {
     private String title;
@@ -42,6 +44,6 @@ public class AIFFSong implements Song
     @Override
     public String getFileName()
     {
-        return this.filePath;
+        return new File(filePath).getName();
     }
 }

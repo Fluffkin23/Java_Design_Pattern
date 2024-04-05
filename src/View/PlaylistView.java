@@ -24,7 +24,7 @@ public class PlaylistView extends JPanel implements PlaylistObserver
     private JButton removePlaylistButton;
     private JButton getRemoveSongFromPlaylist;
     private JButton addSongToPlaylistButton;
-    private JButton removeSongFromPlaylistButton;
+
     private JButton refreshPlaylistList;
     private JButton displaySong;
 
@@ -60,19 +60,17 @@ public class PlaylistView extends JPanel implements PlaylistObserver
         createPlaylistButton = new JButton("Create Playlist");
         removePlaylistButton = new JButton("Remove Playlist");
         addSongToPlaylistButton = new JButton("Add Song to Playlist");
-        removeSongFromPlaylistButton = new JButton("Remove Song From Playlist");
         refreshPlaylistList = new JButton("Refres List");
         displaySong = new JButton("Display songs");
-        removeSongFromPlaylistButton = new JButton("Remove Selected Song");
+
 
         // Add buttons to the panel
         buttonPanel.add(createPlaylistButton);
         buttonPanel.add(removePlaylistButton);
         buttonPanel.add(addSongToPlaylistButton);
-        buttonPanel.add(removeSongFromPlaylistButton);
         buttonPanel.add(refreshPlaylistList);
         buttonPanel.add(displaySong);
-        buttonPanel.add(removeSongFromPlaylistButton);
+
 
 
         // Add button panel to the bottom
