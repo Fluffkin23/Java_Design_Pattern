@@ -105,15 +105,15 @@ public class MusicPlayerUI extends JFrame implements MusicControllerObserver {
         controlsPanel.add(loadPlaylist);
         loadPlaylist.addActionListener(e -> selectAndLoadPlaylist());
 
-        JButton btnPlay = new JButton("Play2");
+        JButton btnPlay = new JButton("Play");
         btnPlay.addActionListener(e -> musicController.playSong());
         controlsPanel.add(btnPlay);
 
-        JButton psbutton = new JButton("pause");
+        JButton psbutton = new JButton("Pause");
         psbutton.addActionListener(e -> musicController.pauseSong());
         controlsPanel.add(psbutton);
 
-        JButton resumeButton = new JButton("resume");
+        JButton resumeButton = new JButton("Resume");
         resumeButton.addActionListener(e -> musicController.resumeSong());
         controlsPanel.add(resumeButton);
 
