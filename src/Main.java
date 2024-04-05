@@ -1,15 +1,101 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+public class Main
+{
+//    MusicController controller = new MusicController();
+//
+//
+//        // Create song creators for MP3 and WAV formats
+//        SongCreator mp3Creator = new MP3SongCreator();
+//        SongCreator wavCreator = new WAVSongCreator();
+//
+//        // Use the creators to make song objects
+//        Song mp3Song = mp3Creator.createSong("Title","artist","filepath");
+//        Song wavSong = wavCreator.createSong("Title2","artist2","filepath2");
+//
+//        // Play the songs using the play method
+//        System.out.println("Playing MP3 song: " + mp3Song.getDetails());
+//        mp3Song.play(controller);
+//        // Simulate a pause in the music player
+//        mp3Song.pause(controller);
+//
+//        System.out.println("Playing WAV song: " + wavSong.getDetails());
+//        wavSong.play(controller);
+//        // Simulate a pause in the music player
+//        wavSong.pause(controller);
+//
+//------------------------------  LibraryObserver  ---------------------------------------------------------------------
+//        MusicLibrary library = new MusicLibrary();
+//        LibraryView libraryView = new LibraryView(library);
+//
+//        // Subscribe the view to the library updates
+//        library.subscribe(libraryView);
+//
+//        // Add some songs to the library
+//        library.addSong(new MP3Song("Song 1", "Artist 1"));
+//       library.addSong(new MP3Song("Song 2", "Artist 2"));
+//
+//        // ... At this point, the libraryView's update method will be called automatically.
+//        // Here you could handle more logic such as user input, changing songs, etc.
+//
+//
+// ----------------------------------------------- PlayList ------------------------------------------------------------
+//
+//
+//        // Create a new playlist
+//        Playlist myPlaylist = new Playlist("My Favorite Songs");
+//
+//        // Create a view for the playlist which automatically registers itself as an observer
+//        PlaylistView myPlaylistView = new PlaylistView(myPlaylist);
+////        myPlaylist.addSong(mp3Song);
+////        myPlaylist.addSong(wavSong);
+//
+//        // Add some songs to the playlist
+//        myPlaylist.addSong(new MP3Song("Song 1", "Artist A"));
+//        myPlaylist.addSong(new MP3Song("Song 2", "Artist B"));
+//        myPlaylist.addSong(new WAVSong("Song 3", "Artist C"));
+//
+//        // The view should update automatically every time the playlist is modified
+//        System.out.println("After adding songs:");
+//        myPlaylistView.showPlaylist(myPlaylist);
+//--------------------------------------------------Music Controller ---------------------------------------------------
+//
+//        MusicLibrary library = new MusicLibrary();
+//        LibraryView libraryView = new LibraryView(library);
+//
+//        // Subscribe the view to the library updates
+//        library.subscribe(libraryView);
+//
+//        // Add some songs to the library
+//        library.addSong(new MP3Song("Song 1", "Artist 1"));
+//        library.addSong(new MP3Song("Song 2", "Artist 2"));
+//
+//        // Create a new playlist
+//        Playlist myPlaylist = new Playlist("My Favorite Songs");
+//
+//        myPlaylist.addSong(new MP3Song("Song 1", "Artist A"));
+//        myPlaylist.addSong(new MP3Song("Song 2", "Artist B"));
+//        myPlaylist.addSong(new WAVSong("Song 3", "Artist C"));
+//
+//        // Set up the MusicController with the library and the playlist
+//        MusicController controller = new MusicController();
+//        controller.setMusicLibrary(library);
+//        controller.setCurrentPlaylist(myPlaylist);
+//
+//        // Set up the MusicPlayerUI with the controller
+//        MusicPlayerUI ui = new MusicPlayerUI(controller);
+//        controller.selectSong(0);
+//        controller.playSong();
+//        ui.displayPlaylist(myPlaylist);
+// ------------------------------------------------- Playback Strategy -------------------------------------------------
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
-    }
+//        Playlist myPlaylist = new Playlist("Repeat");
+//
+//        myPlaylist.addSong(new AIFFSong("Song 1", "Artist A"));
+//        myPlaylist.addSong(new AIFFSong("Song 2", "Artist B"));
+//        myPlaylist.addSong(new WAVSong("Song 3", "Artist C"));
+//
+//        // Set the playback strategy to Shuffle and execute it
+//        PlaybackStrategy shuffleStrategy = new ShufflePlayback();
+//        shuffleStrategy.execute(myPlaylist.getSongs());
 }
