@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de4d1ac3-037b-43fb-8449-e597cc8b86a2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Controller/MusicController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MusicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MusicController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/MusicPlayerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MusicPlayerUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

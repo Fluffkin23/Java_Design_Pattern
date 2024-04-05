@@ -219,7 +219,6 @@ public class MusicController
         float max = 6.0f;   // Maximum decibels
         return (max - min) * (percentage / 100.0f) + min;
 
-        // ... rest of the MusicController methods
     }
 }
 

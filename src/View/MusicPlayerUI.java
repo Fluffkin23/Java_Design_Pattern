@@ -1,9 +1,13 @@
 package View;
 
+import Controller.MusicController;
+import Model.Playlist;
+import Model.Song;
 import Observer.MusicControllerObserver;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 
 public class MusicPlayerUI extends JFrame implements MusicControllerObserver {
@@ -153,4 +157,58 @@ public class MusicPlayerUI extends JFrame implements MusicControllerObserver {
         add(tabbedPane);
     } // end of the final GUI
 
+    public void selectAndLoadPlaylist()
+    {
+        // Construct the path to the Music Folder in the user's home directory
+        String userHome = System.getProperty("user.home");
+        File musicFolder = new File(userHome, "Music");
+
+        // Initialize JFileChooser with the musicFolder as the current directory if it exists and is a directory
+        JFileChooser chooser;
+        if (musicFolder.exists() && musicFolder.isDirectory()) {
+            chooser = new JFileChooser(musicFolder);
+        } else {
+            System.out.println("The Music Folder does not exist or is not a directory. Please ensure the Music Folder is correctly located in your home directory.");
+            return;
+        }
+
+        // Configure the chooser
+        chooser.setDialogTitle("Select Playlist Folder");
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        chooser.setAcceptAllFileFilterUsed(false);
+
+        // Show the open dialog window
+        if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+            File selectedFolder = chooser.getSelectedFile();
+            // Load the playlist from the selected folder
+            Playlist playlist = new Playlist(selectedFolder.getName());
+            playlist.loadPlaylistFromDirectory(selectedFolder.getAbsolutePath());
+            musicController.setPlaylist(playlist);
+
+            // Debugging output to check loaded songs
+            for (Song song : musicController.getPlaylist().getPlaylistSongs()) {
+                System.out.println("Index: " + musicController.getPlaylist().getPlaylistSongs().indexOf(song) + " - Title: " + song.getTitle());
+            }
+        } else {
+            System.out.println("No selection was made.");
+        }
+    }
+
+    @Override
+    public void update(String title, String artist)
+    {
+        trackTitleLabel.setText(title);
+        trackInfoLabel.setText("Track info: " + artist);
+    }
+    
+    public static void main(String[] args) {
+        MusicController musicController1 = new MusicController();
+
+
+
+        SwingUtilities.invokeLater(() -> {
+            MusicPlayerUI app = new MusicPlayerUI(musicController1);
+            app.setVisible(true);
+        });
+    }
 }
