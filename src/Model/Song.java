@@ -2,9 +2,9 @@ package Model;
 
 public interface Song
 {
-    void play();
-    void pause();
-    String getDetails();
+    String getTitle();
+    String getArtist();
+    String getFilePath();
     void setFilePath(String filePath);
-
+    String getFileName();
 }
