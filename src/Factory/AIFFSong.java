@@ -2,15 +2,13 @@ package Factory;
 
 import Model.Song;
 
-import java.io.File;
-
-public class WAVSong implements Song
+public class AIFFSong implements Song
 {
     private String title;
     private String artist;
     private String filePath;
 
-    public WAVSong(String title, String artist,String filePath)
+    public AIFFSong(String title, String artist,String filePath)
     {
         this.title = title;
         this.artist = artist;
@@ -44,6 +42,6 @@ public class WAVSong implements Song
     @Override
     public String getFileName()
     {
-        return new File(filePath).getName();
+        return this.filePath;
     }
 }
