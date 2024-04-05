@@ -1,15 +1,9 @@
 package View;
 
-import Controller.MusicController;
-import Model.MusicLibrary;
-import Model.Playlist;
-import Model.Song;
 import Observer.MusicControllerObserver;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.util.List;
 
 
 public class MusicPlayerUI extends JFrame implements MusicControllerObserver {
@@ -158,4 +152,5 @@ public class MusicPlayerUI extends JFrame implements MusicControllerObserver {
         // Adding the tabbed pane to the frame
         add(tabbedPane);
     } // end of the final GUI
+
 }
