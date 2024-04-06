@@ -14,7 +14,7 @@ The application should have the following features:
 
 *Song Selection*: Users should be able to browse their music library and select a song to play. They might have a large collection, so think about how to make this process user-friendly. 
 
-*Playing Music*: Once a song is selected, users should be able to play the song. They should also have the option to pause the song if needed. 
+*Playing Music*: Once a playlist is selected, users should be able to play the Playlist. They should also have the option to pause the song if needed. 
 
 *Volume Control*: Users should be able to adjust the volume of the music to their liking. They might want to listen to music softly in the background or blast their favorite song, so make sure the volume control is easy to use. 
 
@@ -22,24 +22,25 @@ The application should have the following features:
 
 *Shuffling Songs*: Sometimes, users might want to mix things up. The application should have a feature that shuffles the songs in the playlist, playing them in a random order. 
 
+*Repeat Song*: Sometimes, users might want to listen the same song over and over again.. The application should have a feature that let the user play a selected song again and again. 
+
 *User Interface*: All of these features should be easy to use. The application should have a simple, intuitive user interface. Users should be able to easily find and use all of the features. 
 
 ## MosCoW Analysis 
 
 | Mo (Must have) |                                                                                                 |
 |----------------|-------------------------------------------------------------------------------------------------|
-|                | Music Library Management: Ability to add, remove, and manage songs in the library.               |
-|                | Basic Playback Controls: Play, pause, and stop functionalities for songs.                       |
+|                | Music Library Management: Ability to add, remove, and manage songs in the library.              |
+|                | Basic Playback Controls: Play, pause, and resume functionalities for songs.                     |
 |                | Playlist Creation: Ability to create and manage playlists.                                      |
-|                | SelectionStrategy Interface: Including at least one selection strategy (e.g., RandomSelectionStrategy) to allow for basic playlist playback customization. |
-|                | Observer Pattern Implementation: To ensure the UI automatically updates in response to changes in the music library or playlists. |
-|                | Basic UI: A minimal user interface (MusicPlayerUI) that allows users to interact with the music player, including selecting songs, playing music, and viewing playlists. |
-| S (Should have) |                                                                                                |
+|                | Creating a song(Factory Method) : Ability to create a song by using a WAV or AIFF file                               
+|                | Observer Pattern Implementation: To ensure the UI automatically updates in response to changes in the music library or playlists.                                                                                                      |
+|                | Basic UI: A minimal user interface (MusicPlayerUI) that allows users to interact with the music player, including selecting songs, playing music, and viewing playlists.                                                             |
+| S (Should have)|                                                                                                 |
 |                | Volume Control: Ability to adjust the volume (VolumeCommand).                                   |
-|                | Shuffle and Repeat: ShuffleDecorator for playing songs in a random order and an option to repeat songs or playlists. |
-| Co (Could have) |                                                                                               |
-|                | Custom Selection Strategies: Additional selection strategies beyond genre and randomness, such as mood-based or activity-based selections. |
-|                | Video Playback: Support for music videos or visualizers.                                       |
+|                | Shuffle and Repeat: Playback strategy for playing songs in a random order and an option to repeat songs or playlists. |
+| Co (Could have)|                                                                                                 |
+|                | Video Playback: Support for music videos or visualizers.                                        |
 | W (Won’t have) |                                                                                                 |
 |                | Music Purchase Integration: Buying songs or playlists directly from the app.                    |
 |                | Live Streaming Services: Integrating live music or radio streaming ser
@@ -48,40 +49,32 @@ The application should have the following features:
 
 Design patterns are standard solutions to common problems in software design. Each pattern is like a blueprint that you can customize to solve a particular design problem in your code. Here's an overview of some fundamental design patterns:
 
-## Command Pattern
+## Factory Pattern (specifically Song Creation)
 
-- **What it does:** Think of the Command pattern like using a remote control to operate your TV. Each button on the remote is a command that the TV can understand and execute, such as turning on/off, changing the channel, or adjusting the volume. In software, the Command pattern turns various actions (like play, pause, stop) into objects. This means you can control these actions more flexibly, such as scheduling them for later, undoing them, or logging them.
-- **Problem it solves:** Without this pattern, every time you wanted to do something in the app, you'd have to directly tell it what to do right then and there. This can get messy, especially if you want to undo actions or keep track of what's been done. The Command pattern makes the app's actions more manageable and versatile.
+- **What it does:** Imagine you're at a restaurant where you can customize your meal. You choose what you want (like pasta, pizza, or a salad), but you don't need to know how the kitchen makes it. The Factory pattern works similarly for creating a song. You decide the type of song you want (like "AIFF" or "WAV"), and the Factory handles the creation details.
+- **Problem it solves:** This pattern keeps you from needing to know all the technical details of how a song is made. It makes the app easier to change and grow because you can add new song types(MP3, AAC, FLAC etc.) without messing with the rest of the code.
 
-## Factory Pattern (specifically PlaylistFactory)
 
-- **What it does:** Imagine you're at a restaurant where you can customize your meal. You choose what you want (like pasta, pizza, or a salad), but you don't need to know how the kitchen makes it. The Factory pattern works similarly for creating playlists. You decide the type of playlist you want (like "Party" or "Workout"), and the Factory handles the creation details.
-- **Problem it solves:** This pattern keeps you from needing to know all the technical details of how playlists are made. It makes the app easier to change and grow because you can add new playlist types without messing with the rest of your code.
+## Strategy Pattern (specifically Playback)
 
-## Decorator Pattern (specifically ShuffleDecorator)
-
-- **What it does:** Imagine putting stickers on your laptop to customize it without buying a new one. The Decorator pattern lets you add new features to objects (like playlists) in a similar way. For example, you can add a "shuffle" feature to a playlist so the songs play in a random order, without changing how playlists are fundamentally made or used.
-- **Problem it solves:** It's like getting a new feature without having to buy a new model. This pattern lets you add new tricks to your playlists without rewriting or complicating the original playlist code.
-
-## Strategy Pattern (specifically SelectStrategy)
-
-- **What it does:** Think of this like having different travel routes for getting to a destination depending on the time of day or traffic. The Strategy pattern allows you to choose different ways (or strategies) for doing something, like selecting the next song to play. You can switch strategies easily, like choosing between playing songs in order or randomly.
-- **Problem it solves:** It gives you flexibility in how you do things, like choosing songs, without having to change the player's core. You can easily add new ways to select songs as you think of them.
+- **What it does:** Think of this like having different travel routes for getting to a destination depending on the time of day or traffic. The Strategy pattern allows you to choose different ways (or strategies) for doing something, like selecting the next song to play. You can switch strategies easily, like choosing between playing songs in order, randomly, or to play the same song, only on a button press.
+- **Problem it solves:** It gives  flexibility in how you do things, like playing songs, without having to change the player's core. You can easily add new ways to play the songs from a playlist as you think of them.
 
 ## Observer Pattern
 
-- **What it does:** It's like subscribing to a newsletter. Once you sign up, you automatically get updates whenever there's news. In the Observer pattern, parts of your app "subscribe" to changes in other parts. For example, if you add a new song to a playlist, the playlist view automatically updates to show this without you having to do anything extra.
-- **Problem it solves:** Keeps different parts of your app in sync without them needing to constantly check in with each other. This way, when something changes (like adding a new song), all subscribed parts get updated automatically, making sure your app always shows the latest info.
+- **What it does:** It's like subscribing to a newsletter. Once you sign up, you automatically get updates whenever there's news. In the Observer pattern, parts of your app "subscribe" to changes in other parts. For example, if you add a new song to a playlist, the playlist view automatically updates to show this without you having to do anything extra / or sometimes you need to press a refresh a button.
+- **Problem it solves:** Keeps different parts of the app in sync without them needing to constantly check in with each other. This way, when something changes (like adding a new song, creating a new playlist etc), all subscribed parts get updated automatically, making sure the app always shows the latest info.
 
 
 ## MVC Architecture Section:
 - **`Model`**: 
     - Represents the application's data and business logic.
-    - In this application, this includes classes like Song, Playlist, and MusicLibrary.
+    - In this application, this includes classes like Song, Playlist, PlaylistLibrary and MusicLibrary.
+    - `Also, all the classes from Factory Method folder (AIFFSong, AIFFSongCreator, SongCreator, WAVSong, WAVSongCreator). For a better view/ understading we decided to keep the Factory Method folder out from the Model.`
     - The Model is responsible for managing the data, logic, and rules of the application.
 - **`View`**: 
     - Represents the UI components of the application.
-    - Includes classes like MusicPlayerUI, PlaylistView, and LibraryView.
+    - Includes classes like MusicPlayerUI, PlaylistView, and LibraryView, CreateSongView.
     - The View is responsible for displaying the data provided by the Model in a specific format.
 - **`Controller`**: 
     - Acts as an interface between Model and View components.
