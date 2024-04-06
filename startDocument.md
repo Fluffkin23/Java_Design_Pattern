@@ -152,16 +152,39 @@ The following document outlines the structure and responsibilities of each class
 In this section the input and output of the application will be described
 #### Input
 
-In the table below all the input (that the user has to input in order to make the application work) are described.
+### `CreateSongView`
+| Case                    | Type          | Conditions                                               |
+|-------------------------|---------------|----------------------------------------------------------|
+| Select audio file       | File path     | File must be in a supported audio format.                |
+| Input song metadata     | Text/String   | Fields for artist, title, album, etc., must be filled.   |
+| Save song information   | Command/Event | All required fields must be valid before saving.         |
 
-| Case            | Type      | Conditions          |
-|-----------------|-----------|---------------------|
-| Song Selection  | Song      | not empty           |
-| Play Command    | Command   | not empty           |
-| Pause Command   | Command   | not empty           |
-| Volume Level    | double    | 0.0 <= volume <= 1.0|
-| Playlist Songs  | List<Song>| not empty           |
-| Shuffle Command | Command   | not empty           |
+### `PlaylistView`
+| Case                     | Type          | Conditions                                               |
+|--------------------------|---------------|----------------------------------------------------------|
+| Select song to play      | Song /Ref   | Song must be available in the playlist.                  |
+| Select song to remove    | Song /Ref   | Song must be available in the playlist for removal.      |
+
+### `PlaylistLibrary`
+| Case                    | Type          | Conditions                                               |
+|-------------------------|---------------|----------------------------------------------------------|
+| Load playlist           | Playlist    | Playlist must exist within the user's library.           |
+| Create new playlist     | Text/String   | Requires a name for the new playlist.                    |
+| Delete playlist         | Playlist    | Playlist must exist and be selected for deletion.        |
+
+### `MusicLibrary`
+| Case                     | Type          | Conditions                                               |
+|--------------------------|---------------|----------------------------------------------------------|
+| Add new song             | Song Object   | Song must not already be present in the library.         |
+| Remove existing song     | Song /Ref   | Song must exist in the library for removal.              |
+
+### `MusicController`
+| Case                       | Type          | Conditions                                               |
+|----------------------------|---------------|----------------------------------------------------------|
+| Select song to control     | Song /Ref   | Song must be loaded for playback control actions.        |
+| Choose playback strategy   | Playback | A valid playback strategy must be selected.               |
+
+
 
 
 #### Output
