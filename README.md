@@ -3,6 +3,7 @@
 Welcome to the Music Player Application, a user-friendly, out-of-the-box music player that allows you to effortlessly manage and play your music collections. Follow the instructions below to start enjoying your music with our application.
 
 The folder named `Music Testing` contain multiple songs in AIFF and WAV format for testing.
+`Note : The Song and Playlist will be created in the Music folder of your PC. If the folder does not exist, it will be created`
 
 ## Getting Started
 
