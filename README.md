@@ -2,9 +2,12 @@
 
 Welcome to the Music Player Application, a user-friendly, out-of-the-box music player that allows you to effortlessly manage and play your music collections. Follow the instructions below to start enjoying your music with our application.
 
+The folder named `Music Testing` contain multiple songs in AIFF and WAV format for testing.
+
 ## Getting Started
 
 To launch the Music Player Application, simply execute the provided Jar file. No additional setup is required.
+The Jar file is named : Java_Design_Pattern.
 
 ## Features
 
@@ -19,34 +22,34 @@ To launch the Music Player Application, simply execute the provided Jar file. No
 
 - Access the `Music Library` to view all the songs you have created.
 - Use the `Refresh Library` button to update the library view.
-- To remove a song, select it and click **Remove**.
+- To remove a song, select it and click `Remove`.
 
 ### Playlists
 
-- In the **Playlist** tab, you can create, view, and manage playlists.
-- Click **Create Playlist**, enter a name for your playlist, and press **OK**.
-- Refresh the list of playlists by pressing **Refresh List**.
-- Remove a selected playlist using the **Remove Playlist** button.
-- To add a song to a playlist, select the playlist, click **Add Song to Playlist**, navigate to your music folder, select the song, and press **Open**.
-- View the songs in a playlist by selecting it and pressing **Display Songs**.
+- In the `Playlist` tab, you can create, view, and manage playlists.
+- Click `Create Playlist`, enter a name for your playlist, and press `OK`.
+- Refresh the list of playlists by pressing `Refresh List`.
+- Remove a selected playlist using the `Remove Playlist` button.
+- To add a song to a playlist, select the playlist, click `Add Song to Playlist`, navigate to your music folder, select the song, and press `Open`.
+- View the songs in a playlist by selecting it and pressing `Display Songs`.
 
 ### Player Controls
 
-- The **Player** tab allows you to load and play songs from a playlist.
-- To load a playlist, click **Load Playlist**, navigate to the "Music" folder, select your playlist, and press **Open**.
-- Press **Play** to start playback in the order the songs are listed in the playlist.
-    - **Note**: **Next** and **Previous** buttons are disabled in normal playback mode.
+- The `Player` tab allows you to load and play songs from a playlist.
+- To load a playlist, click `Load Playlist`, navigate to the "Music" folder, select your playlist, and press `Open`.
+- Press `Play` to start playback in the order the songs are listed in the playlist.
+    - **Note**:`Next` and `Previous` buttons are disabled in normal playback mode.
 
 #### Playback Modes
 
-- **Repeat Playback**: Click **Repeat** to play the current song on loop. Press again to return to normal playback. **Next** and **Previous** buttons are enabled in this mode.
-- **Shuffle Playback**: Activate shuffle mode by pressing **Shuffle**, playing songs in a random order. Press again to return to normal playback.
+- **Repeat Playback**: Click `Repeat` to play the current song on loop. Press again to return to normal playback. `Next` and `Previous` buttons are enabled in this mode.
+- **Shuffle Playback**: Activate shuffle mode by pressing`Shuffle`, playing songs in a random order. Press again to return to normal playback.
 
 **Important Note**: To change the playback mode, do not pause the song; keep it playing and then switch the mode.
 
 ### Troubleshooting
 
-- If the song title or artist name does not appear correctly, press the **Refresh** button to update the information.
+- If the song title or artist name does not appear correctly, press the `Refresh` button to update the information.
 
 ## Note
 
