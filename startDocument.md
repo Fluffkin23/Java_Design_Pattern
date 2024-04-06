@@ -185,24 +185,38 @@ In this section the input and output of the application will be described
 | Choose playback strategy   | Playback | A valid playback strategy must be selected.               |
 
 
-
-
 #### Output
 
-| Case               | Type         | Conditions                                                                 |
-|--------------------|--------------|----------------------------------------------------------------------------|
-| Song Selection     | String       | Display the title and artist of the selected song.                          |
-| Playing Music      | Audio Output | Play the selected song; Output changes when paused/resumed.                 |
-| Volume Control     | Integer      | Reflects the current volume level; Range typically from 0 (mute) to 100 (maximum).|
-| Creating Playlists | List<String> | Display the list of song titles in the playlist; Updates when songs are added or removed.|
-| Shuffling Songs    | List<String> | Display the shuffled order of songs in the playlist.                        |
-| User Interface Feedback   | Various      | Visual and/or audio cues to confirm user actions (e.g., song selection, volume change).|
+### `CreateSongView`
+| Case                          | Type          | Conditions                                               |
+|-------------------------------|---------------|----------------------------------------------------------|
+| Song file selection confirmed | File path     | Path to the selected audio file is output for processing.|
+| Metadata entered              | Text/String   | Entered metadata is output for song creation.            |
+| Song saved successfully       | Confirmation  | Confirmation of song save operation is output.           |
 
-#### Calculations
+### `PlaylistView`
+| Case                      | Type          | Conditions                                               |
+|---------------------------|---------------|----------------------------------------------------------|
+| Song playback initiated   | Signal        | Signals the song has begun playing.                      |
+| Song removed from playlist | Confirmation  | Confirmation of song removal is output.                  |
+| Playlist displayed        | Playlist State | The current state of the playlist is output to the user. |
 
-| Case                       | Calculation                                   | Type   |
-|----------------------------|-----------------------------------------------|--------|
-| Total Duration of Playlist | Sum of the duration of all songs in the playlist | double |
-| Average Song Duration      | Total duration of all songs / Number of songs  | double |
-| Number of Songs in Playlist| Count of songs in the playlist                 | int    |
-| Total Play Time            | Sum of the duration of all songs played        | double |
+### `PlaylistLibrary`
+| Case                    | Type          | Conditions                                               |
+|-------------------------|---------------|----------------------------------------------------------|
+| Playlist loaded         | Playlist Data | Loaded playlist details are output to the display.       |
+| New playlist created    | Confirmation  | Confirmation of new playlist creation is output.         |
+| Playlist deleted        | Confirmation  | Confirmation of playlist deletion is output.             |
+
+### `MusicLibrary`
+| Case                        | Type          | Conditions                                               |
+|-----------------------------|---------------|----------------------------------------------------------|
+| New song added to library   | Confirmation  | Confirmation of new song addition is output.             |
+| Song removed from library   | Confirmation  | Confirmation of song removal is output.                  |
+| Music library updated       | Library State | Updated library content is output for user display.      |
+
+### `MusicController`
+| Case                         | Type          | Conditions                                               |
+|------------------------------|---------------|----------------------------------------------------------|
+| Playback control signal sent | Signal        | Outputs signal indicating playback action (play, pause, etc.) |
+| Playback strategy changed    | Confirmation  | Confirmation of change in playback strategy is output.   |
