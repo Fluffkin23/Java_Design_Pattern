@@ -81,63 +81,71 @@ Design patterns are standard solutions to common problems in software design. Ea
     - Contains classes like MusicController that handle user input and convert it to commands for the Model or View.
     - The Controller interprets the input from the user, making calls to model objects to retrieve data or to view objects to display changes.
 
-## Classes
-- **`Song`** class: 
-    - Represents an individual music track. 
-    - Contains attributes like title, artist, and duration.
-- **`Playlist`** class: 
-    - Manages a collection of Song objects.
-    - Allows operations like adding and removing songs, and accessing playlist details.
-        - *Example*: "Workout Hits"
+# Classes
+The following document outlines the structure and responsibilities of each class within the music player application as defined by the provided class diagram.
 
-- **`MusicLibrary`** class: 
-    - Stores and manages the entire collection of Song objects available in the application.
-    - Facilitates song selection and browsing of the music library.
-      
-- **`MusicPlayerUI`** class: 
-    - The main interface for user interaction.
-    - Integrates features like playlist view and library view for user interaction.
-         - *Example*: A graphical user interface with buttons for play, pause, and a slider for volume control.
-           
-- **`PlaylistView`** class and **`LibraryView`**: 
-    - Dedicated views for displaying playlists and the music library respectively.
-    - Handle user interactions specific to each view.
-         - *Example*: PlaylistView shows a list of playlists, while LibraryView displays all available songs.
-           
-- **`MusicController`** class: 
-    - Manages user interactions such as play, pause, and volume control.
-    - Communicates with the model to update the state of the music player.
-         - *Example*: Responds to a play button click by starting the selected song.
-           
-- **`Command`** (Design pattern) interface: 
-    - Encapsulate different actions as executable commands.
-    - Allow for flexible execution and potential undo functionalities.
-         - *Example*: PlayCommand triggers the playing of a song when executed.
-           
-- **`PlaylistFactory`** (Design pattern) interface: 
-    - Define the method for creating different types of playlists.
-    - Allow for the easy addition of new playlist types.
-         - *Example*:  PartyPlaylistFactory creates a playlist with upbeat, danceable tracks.
-           
-- **`ShuffleDecorator`** (Design pattern) class: 
-    - Enhances a playlist with the capability to shuffle songs.
-         - *Example*:  When applied to a playlist, the order of songs is randomized.
-           
-- **`SelectStrategy`** (Design pattern) interface: 
-    - Define different strategies for song selection within a playlist.
-         - *Example*:   RandomSelectionStrategy selects a song at random from a playlist.
-           
-- **`Observer`** (Design pattern) interface: 
-    - Observe and respond to changes in the music library or playlists.
-         - *Example*: PlaylistObserver updates the PlaylistView whenever a song is added or removed from a playlist.
-           
-- **`MusicPlayerApp`** class: 
-    - The main class to initialize and integrate MVC components.
-    - Acts as the entry point for the application.
-         - *Example*:  Initializes the MusicLibrary, MusicPlayerUI, and MusicController on application startup.
+## User Interface Classes
 
+### `CreateSongView`
+- **Description**: Manages the interface for song creation.
+- **Responsibilities**: Handles file selection, metadata input, and saving new song entries.
+
+### `PlaylistView`
+- **Description**: Manages the display and interactions within a playlist.
+- **Responsibilities**: Updates playlist display.
+
+### `MusicPlayerUI`
+- **Description**: Provides the user interface controls for music playback.
+- **Responsibilities**: Interacts with the music controller for play, stop, and other playback actions.
+
+### `LibraryView`
+- **Description**: Presents the music library interface.
+- **Responsibilities**: Refreshes the view, selects songs, and initializes UI components.
+
+## Model Classes
+
+### `PlaylistLibrary`
+- **Description**: Represents a collection of playlists.
+- **Responsibilities**: Loads and saves playlists, notifies observers of changes.
+
+### `Playlist`
+- **Description**: Stores details of a specific playlist.
+- **Responsibilities**: Manages playlist content, including adding and removing songs.
+
+### `MusicLibrary`
+- **Description**: Manages the collection of all songs.
+- **Responsibilities**: Adds and removes songs, notifies observers of library updates.
+
+### `AIFFSong`, `WAVSong`
+- **Description**: Represents song entities for AIFF and WAV formats.
+- **Responsibilities**: Stores and retrieves song information and format-specific details.
+
+## Controller Classes
+
+### `MusicController`
+- **Description**: Serves as the controller for music flow.
+- **Responsibilities**: Maintains libraries, controls current playlists, and manages playback strategies.
+
+## Playback Strategy Classes
+
+### `ShufflePlayback`, `RepeatPlayback`, `NormalPlayback`
+- **Description**: Defines different playback strategies.
+- **Responsibilities**: Manages order and mode of song playback according to the strategy (shuffle, repeat, normal).
+
+## Factory Classes
+
+### `AIFFSongCreator`, `WAVSongCreator`
+- **Description**: Handles the creation of song objects in specific formats.
+- **Responsibilities**: Creates `AIFFSong` or `WAVSong` instances with appropriate metadata.
+
+## Observer Interfaces
+
+### `PlaylistObserver`, `MusicControllerObserver`, `LibraryObserver`
+- **Description**: Defines methods for observer notifications.
+- **Responsibilities**: Receives updates on changes in the subject being observed (playlist, music controller, library).
+  
 ## Class Diagram
-![Class Diagram for Design Patterns](ClassDiagramV1.png)
+![Class Diagram for Design Patterns](Design_Pattern_Class_Diagram.png)
 
 ### Input & Output
 
